@@ -1,20 +1,23 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
   }
 
 .container{
-    background-color: aquamarine;
+    background-color: rgb(21, 22, 22);
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-wrap: wrap;
-    
+    width: 50%;
 }
 
 .card{
     background-color:transparent;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     margin: 5px;
+    border-radius: 10%;
 }
 
 .inner-card{
@@ -25,6 +28,7 @@ body {
     transition: transform 0.6s;
     transform-style: preserve-3d;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10%;
 }
 
 .front-card, .back-card{
@@ -32,11 +36,15 @@ body {
     height: 100%;
     width: 100%;
     backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
 }
 
 .front-card{
    z-index: 2; 
-   background-color: rgb(0, 0, 0);
+   background-color: rgb(8, 179, 185);
    color: white;
 }
 

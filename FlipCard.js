@@ -1,22 +1,15 @@
 class FlipCard{
 
     constructor(){
-        this.container =document.querySelector('.container');
-        var innerCard = this.createInnercard(this.createCard(1),1);
-        this.createFrontCard(innerCard,1);
-        this.createBackCard(innerCard,1);
-
-        var innerCard = this.createInnercard(this.createCard(2),2);
-        this.createFrontCard(innerCard,2);
-        this.createBackCard(innerCard,2);
+        this.container =document.querySelector('.container'); 
     }
 
-    createCard(no){
+    createCard(no,nameMethod){
         var id = 'card'+no;
         var card = document.createElement("div");
         card.setAttribute('class','card');
         card.setAttribute('id',id);
-        card.setAttribute('onclick','f.flip('+no+')');
+        card.setAttribute('onclick',nameMethod+'('+no+')');
         this.container.appendChild(card);
         return card;
     }
@@ -35,19 +28,19 @@ class FlipCard{
         var front = document.createElement("div");
         front.setAttribute('class','front-card');
         front.setAttribute('id',id);
-        var t = document.createTextNode("FRONT"+no);
-        front.appendChild(t);
         innerCard.appendChild(front);
         return front;
     }
 
-    createBackCard(innerCard,no){
+    createBackCard(innerCard,no,emot){
         var id = 'backCard'+no;
         var back = document.createElement("div");
         back.setAttribute('class','back-card');
         back.setAttribute('id',id);
-        var t = document.createTextNode("BACK"+no);
-        back.appendChild(t);
+        var span = document.createElement("span");
+        span.innerHTML =emot;
+        span.setAttribute('style','font-size:100px')
+        back.appendChild(span);
         innerCard.appendChild(back);
         return back;
     }
@@ -59,11 +52,7 @@ class FlipCard{
         }
         else{
             innerCard.setAttribute('style', 'transform: rotateY(0deg);');
-        }
-        
+        }   
     }
   
 }
-
-const f = new FlipCard();
-
