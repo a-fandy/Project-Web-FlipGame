@@ -54,6 +54,6 @@ body {
     transform: rotateY(180deg);
 }
 
-/* .card:hover .inner-card{
-    transform: rotateY(180deg);
-} */
+.card:hover{
+    cursor: pointer;
+}

@@ -2,15 +2,15 @@ class System {
     emoji =['🐶','🦍','🐒','🐵','🐕',
             '🐩','🐺','🦊','🦝','🐱'];
     SIZE = 10;
+    count=[];
 
     constructor(){
         this.ranEmoji = new Array(this.SIZE*2);
         this.shuffleEmoji();
-
+        this.role = new Role(this.ranEmoji);
         this.flipcard = new FlipCard();
-        this.nameMethod ="s.flipcard.flip";
+        this.nameMethod ="s.flip";
         this.generateCard();
-     
     } 
 
     shuffleEmoji(){
@@ -34,9 +34,36 @@ class System {
             var innerCard = this.flipcard.createInnercard(this.flipcard.createCard(i,this.nameMethod),i);
             this.flipcard.createFrontCard(innerCard,i);
             this.flipcard.createBackCard(innerCard,i,this.emoji[this.ranEmoji[i]]);
-            this.flipcard.flip(i);
+            // this.flipcard.flip(i);
         }
-    }  
+    }
+
+    flip(no){
+        this.flipcard.flip(no);
+        this.count.push(no);
+        if(this.count.length==2){
+                if(this.role.cekAnswer(this.count)){
+                    this.removeFlip(this.count);
+                    this.count=[];
+                }
+                else{
+                    setTimeout(function(that){ that.flipAll(that.count)}, 500,this);
+                }
+        }
+    }
+
+    flipAll(toFlip){
+        for(var i=0;i<toFlip.length;i++){
+            this.flipcard.flip(toFlip[i]);
+        }
+        this.count=[];
+    }
+
+    removeFlip(toFlip){
+        for(var i=0;i<toFlip.length;i++){
+            document.getElementById('card'+toFlip[i]).removeAttribute('onclick');
+        }
+    }
 
 
 }
