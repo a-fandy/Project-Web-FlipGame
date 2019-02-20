@@ -45,14 +45,14 @@ class FlipCard{
         return back;
     }
 
-    flip(no){
+    flipOpen(no){
         var innerCard=  document.querySelector('#innerCard'+no);
-        if(innerCard.style.transform!="rotateY(180deg)"){
-            innerCard.setAttribute('style', 'transform: rotateY(180deg);');
-        }
-        else{
-            innerCard.setAttribute('style', 'transform: rotateY(0deg);');
-        }   
+        innerCard.setAttribute('style', 'transform: rotateY(180deg);');
+    }
+
+    flipClose(no){
+        var innerCard=  document.querySelector('#innerCard'+no);
+        innerCard.setAttribute('style', 'transform: rotateY(0deg);'); 
     }
   
 }

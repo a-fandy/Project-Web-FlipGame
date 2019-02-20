@@ -39,8 +39,11 @@ class System {
     }
 
     flip(no){
-        this.flipcard.flip(no);
+        this.flipcard.flipOpen(no);
         this.count.push(no);
+        if(!this.role.cekSame(this.count)){
+            this.count.pop();
+        }
         if(this.count.length==2){
                 if(this.role.cekAnswer(this.count)){
                     this.removeFlip(this.count);
@@ -54,7 +57,7 @@ class System {
 
     flipAll(toFlip){
         for(var i=0;i<toFlip.length;i++){
-            this.flipcard.flip(toFlip[i]);
+            this.flipcard.flipClose(toFlip[i]);
         }
         this.count=[];
     }
