@@ -1,16 +1,16 @@
 class System {
-    emoji =['🐶','🦍','🐒','🐵','🐕',
-            '🐩','🐺','🦊','🦝','🐱'];
-    SIZE = 10;
-    count=[];
-
-    constructor(){
+    constructor(emoji,nm){
+        this.emoji = emoji;
+        this.SIZE = this.emoji.length;
+        this.count=[];
+        this.STEP=0;
         this.ranEmoji = new Array(this.SIZE*2);
         this.shuffleEmoji();
         this.role = new Role(this.ranEmoji);
         this.flipcard = new FlipCard();
-        this.nameMethod ="s.flip";
+        this.nameMethod =nm;
         this.generateCard();
+        document.getElementById('step').textContent = this.STEP;
     } 
 
     shuffleEmoji(){
@@ -41,10 +41,12 @@ class System {
     flip(no){
         this.flipcard.flipOpen(no);
         this.count.push(no);
-        if(!this.role.cekSame(this.count)){
+        if(this.role.cekSame(this.count)){
             this.count.pop();
         }
         if(this.count.length==2){
+            this.STEP++;
+            document.getElementById('step').textContent = this.STEP;
                 if(this.role.cekAnswer(this.count)){
                     this.removeFlip(this.count);
                     this.count=[];
@@ -52,6 +54,9 @@ class System {
                 else{
                     setTimeout(function(that){ that.flipAll(that.count)}, 500,this);
                 }
+        }
+        if(this.role.cekFinish(this.SIZE)){
+            setTimeout(function(that){ alert("FINISH");}, 500,this);
         }
     }
 
@@ -68,8 +73,13 @@ class System {
         }
     }
 
-
+    reset(){
+        location.reload();
+    }
 }
 
-const s = new System();
+
+emoji =['🐶','🦍','🐒','🐵','🐕',
+'🐩','🐺','🦊','🦝','🐱'];
+const s = new System(emoji,"s.flip");
 

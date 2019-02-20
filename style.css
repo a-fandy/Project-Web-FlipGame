@@ -2,7 +2,44 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
+
+.bar{
+    display: flex;
+    justify-content: space-around;
+    background-color: aqua;
+    width: 50%;
+    height: 50px;
+    align-items: center; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;   
+}
+
+.judul{
+    width: 50%;
+    background-color: aqua;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+}
+
+.information{
+    background-color: azure;
+    padding: 10px;
+    border-radius: 10%;
+   
+}
+
+#reset{
+    cursor: pointer;
+    border: none;
+    border-radius: 10%;
+    padding: 10px;
+    background-color: rgb(248, 240, 240);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
 .container{
     background-color: rgb(21, 22, 22);
